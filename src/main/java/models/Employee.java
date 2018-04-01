@@ -8,6 +8,7 @@ import models.enums.Role;
 import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "employee")
@@ -33,12 +34,18 @@ public class Employee {
     @JoinColumn(name = "id")
     private Address address_id;
 
-    @ManyToMany
-    private List<Skills> skills;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "skills_employee",
+            joinColumns = {@JoinColumn(name = "employees_id")},
+            inverseJoinColumns = {@JoinColumn(name = "skills_id")})
+    private List<Skills> skills = new ArrayList<>();
 
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    public void addSkill(Skills skills){
+        this.skills.add(skills);
+    }
     @Override
     public String toString() {
         return "Employee{" +

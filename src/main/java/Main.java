@@ -1,4 +1,6 @@
 import models.Employee;
+import models.Skills;
+import models.enums.Type;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.exception.ConstraintViolationException;
@@ -9,6 +11,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+
         getAllInterns().stream().forEach(System.out::println);
     }
     public static List<Employee> getAllInterns() {

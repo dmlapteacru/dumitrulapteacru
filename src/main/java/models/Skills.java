@@ -5,6 +5,7 @@ import lombok.Setter;
 import models.enums.Type;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "skills")
@@ -22,8 +23,8 @@ public class Skills {
     @Column
     private String skill;
 
-    @ManyToMany
-    private List<Employee> employees;
+    @ManyToMany(mappedBy = "skills")
+    private List<Employee> employees = null;
 
     @Override
     public String toString() {
