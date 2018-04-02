@@ -12,7 +12,9 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
-        getAllInterns().stream().forEach(System.out::println);
+//        getAllInterns().stream().forEach(System.out::println);
+        Session session = HibernateConfig.getSessionFactory().openSession();
+        session.close();
     }
     public static List<Employee> getAllInterns() {
 

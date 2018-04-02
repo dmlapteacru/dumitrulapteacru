@@ -7,6 +7,7 @@ import models.enums.Type;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity(name = "skills")
 @Getter
@@ -24,7 +25,7 @@ public class Skills {
     private String skill;
 
     @ManyToMany(mappedBy = "skills")
-    private List<Employee> employees = null;
+    private Set<Employee> employees;
 
     @Override
     public String toString() {

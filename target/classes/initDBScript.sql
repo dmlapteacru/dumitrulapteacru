@@ -58,13 +58,15 @@ INSERT INTO skills(type, skill) VALUES ('SOFT', "Java");
 INSERT INTO skills(type, skill) VALUES ('SOFT', "JavaFX");
 
 INSERT INTO country(ISO_code, name) VALUES (2048, "MOLDOVA");
+INSERT INTO country(ISO_code, name) VALUES (5284, "RUSSIA");
 
 INSERT INTO address(country_id, city, street, street_num) VALUES (1, "CHISINAU", "EMINESCU", 23);
+INSERT INTO address(country_id, city, street, street_num) VALUES (2, "MOSCOW", "POSELKOVO", 2);
 
 INSERT INTO employee(userId, first_name, last_name, role) VALUES ("dlapteacru", "Dumitru", "Lapteacru", "ADMIN");
-INSERT INTO employee(userId, first_name, last_name, address_id, role) VALUES ("aursu", "Ana", "Ursu", 1, "USER");
+INSERT INTO employee(userId, first_name, last_name, address_id, role) VALUES ("aursu", "Ana", "Ursu", "USER");
 
-INSERT INTO employee_skills (employee_id, skills_id) VALUES (1,1);
+INSERT INTO skills_employee (employees_id, skills_id) VALUES (1,1);
 INSERT INTO employee_skills (employee_id, skills_id) VALUES (1,2);
 
 
