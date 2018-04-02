@@ -63,19 +63,24 @@ INSERT INTO country(ISO_code, name) VALUES (5284, "RUSSIA");
 INSERT INTO address(country_id, city, street, street_num) VALUES (1, "CHISINAU", "EMINESCU", 23);
 INSERT INTO address(country_id, city, street, street_num) VALUES (2, "MOSCOW", "POSELKOVO", 2);
 
-INSERT INTO employee(userId, first_name, last_name, role) VALUES ("dlapteacru", "Dumitru", "Lapteacru", "ADMIN");
-INSERT INTO employee(userId, first_name, last_name, address_id, role) VALUES ("aursu", "Ana", "Ursu", "USER");
+INSERT INTO company (name) VALUES ("Endava");
+INSERT INTO company (name) VALUES ("Google");
+
+INSERT INTO employee(userId, first_name, last_name, address_id, company_id, role) VALUES ("dlapteacru", "Dumitru", "Lapteacru",1,1, "ADMIN");
+INSERT INTO employee(userId, first_name, last_name, address_id, company_id, role) VALUES ("aursu", "Ana", "Ursu",2,2, "USER");
 
 INSERT INTO skills_employee (employees_id, skills_id) VALUES (1,1);
-INSERT INTO employee_skills (employee_id, skills_id) VALUES (1,2);
+INSERT INTO skills_employee (employees_id, skills_id) VALUES (1,2);
+INSERT INTO skills_employee (employees_id, skills_id) VALUES (2,2);
+
 
 
 select * from employee
-  join employee_skills
-    on employee_id = employee.id
+  join skills_employee
+    on employees_id = employee.id
   join skills
     on skills_id = skills.id
 # --------------------
-
+SELECT * FROM employee
 # ----------------------
 

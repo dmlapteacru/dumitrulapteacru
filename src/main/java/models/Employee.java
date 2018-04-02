@@ -8,10 +8,7 @@ import models.enums.Role;
 import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Entity(name = "employee")
 @Getter
@@ -32,14 +29,14 @@ public class Employee {
     @Column
     private String last_name;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL)
     private Address address;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany
     @JoinTable(name = "skills_employee",
             joinColumns = {@JoinColumn(name = "employees_id")},
             inverseJoinColumns = {@JoinColumn(name = "skills_id")})
-    private Set<Skills> skills;
+    private Set<Skills> skills = new HashSet<Skills>(Arrays.asList(new Skills(), new Skills()));
 
     @ManyToOne
     private Company company;
@@ -55,8 +52,8 @@ public class Employee {
                 ", first_name='" + first_name + '\'' +
                 ", last_name='" + last_name + '\'' +
                 ", address_id=" + address +
-//                ", skills=" + skills +
-//                ", company_em=" + company_em.getId() +
+//                ", skills=" + skills.toString() +
+                ", company=" + company.getId() +
                 ", role=" + role +
                 '}';
     }

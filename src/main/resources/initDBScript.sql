@@ -81,6 +81,6 @@ select * from employee
   join skills
     on skills_id = skills.id
 # --------------------
-
+SELECT * FROM employee
 # ----------------------
 
