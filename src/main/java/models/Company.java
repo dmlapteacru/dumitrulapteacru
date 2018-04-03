@@ -25,11 +25,22 @@ public class Company {
 
     @Override
     public String toString() {
+        String projects = "";
+        for (Project p: getProjects()
+             ) {
+            projects+=p.toString();
+        }
+
+        String employees = "";
+        for (Employee e: getEmployees()
+             ) {
+            employees+=e.toString();
+        }
         return "Company{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-//                ", projects=" + projects +
-//                ", employees=" + employees +
+                ", projects=" + projects +
+                ", employees=" + employees +
                 '}';
     }
 }

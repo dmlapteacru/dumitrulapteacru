@@ -2,9 +2,12 @@ package models;
 
 import lombok.Getter;
 import lombok.Setter;
+import models.enums.Status;
 import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity(name = "project")
 @Getter
@@ -28,14 +31,26 @@ public class Project {
     @ManyToOne
     private Company company;
 
+    @ManyToMany(mappedBy = "projects")
+    private Set<Employee> employeeSet;
+
+    @Enumerated(EnumType.STRING)
+    private Status status;
+
     @Override
     public String toString() {
+        String employees = '{' +
+                employeeSet.stream()
+                        .map(skill -> skill.getUserId())
+                        .collect(Collectors.joining(" / ")) + '}';
         return "Project{" +
                 "id=" + id +
                 ", project_code=" + project_code +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", company=" + company.getId() +
+                ", company=" + company.getName() +
+                ", employees=" + employees +
+                ", status=" + status +
                 '}';
     }
 }

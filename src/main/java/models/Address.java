@@ -25,11 +25,14 @@ public class Address {
     @Column
     private int street_num;
 
+    @OneToOne(mappedBy = "address")
+    private Employee employee;
+
     @Override
     public String toString() {
         return "Address{" +
                 "id=" + id +
-                ", country='" + country + '\'' +
+                ", country='" + country.getName() + '\'' +
                 ", city='" + city + '\'' +
                 ", street='" + street + '\'' +
                 ", street_num=" + street_num +

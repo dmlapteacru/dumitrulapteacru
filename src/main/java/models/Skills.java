@@ -29,10 +29,16 @@ public class Skills {
 
     @Override
     public String toString() {
+//        String employees = "";
+//        for (Employee e: getEmployees()
+//             ) {
+//            employees+=e.toString();
+//        }
         return "Skills{" +
                 "id=" + id +
                 ", type=" + type +
                 ", skill='" + skill + '\'' +
+//                ", employees=" + employees +
                 '}';
     }
 }
