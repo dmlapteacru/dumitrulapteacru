@@ -13,14 +13,16 @@
         <property name="hibernate.connection.password">rooot</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
         <property name="hibernate.hbm2ddl.auto">update</property>
-        <property name="hibernate.show_sql">true</property>
-        <property name="format_sql">true</property>
+        <property name="hibernate.show_sql">false</property>
+        <property name="format_sql">false</property>
 
         <!-- List of class mappings -->
         <mapping class="models.Employee"/>
         <mapping class="models.Address"/>
         <mapping class="models.Country"/>
         <mapping class="models.Skills"/>
+        <mapping class="models.Company"/>
+        <mapping class="models.Project"/>
 
 
     </session-factory>

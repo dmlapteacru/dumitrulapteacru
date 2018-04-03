@@ -1,37 +1,32 @@
-import models.Employee;
-import models.Skills;
+import dao.DAOImplementation;
+import models.Company;
 import models.enums.Type;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.exception.ConstraintViolationException;
 
-import configuration.HibernateConfig;
-
-import java.util.List;
+import static dao.DAOImplementation.*;
 
 public class Main {
     public static void main(String[] args) {
-
-        getAllInterns().stream().forEach(System.out::println);
+        DAOImplementation daoImplementation = new DAOImplementation();
+            daoImplementation.getEmployees();
+        br();
+            daoImplementation.getEmployeesByProjectCode(7878);
+        br();
+            daoImplementation.getEmployeesByProjectCode(2325);
+        br();
+           daoImplementation.getProjectsByCompanyID(1);
+        br();
+            daoImplementation.getEmployeesBySkillType(Type.TECHNICAL);
+        br();
+            Company company = daoImplementation.detachCompany(1);
+            daoImplementation.loadAndShowCompany(company);
+        br();
+            daoImplementation.editUserByUserId("dlapteacru");
+        br();
+            daoImplementation.getProjectsByJavaSkill();
+        br();
+            daoImplementation.softDeleteEmployee("aursu");
+        br();
+            daoImplementation.softDeleteProject(7879);
     }
-    public static List<Employee> getAllInterns() {
 
-        List<Employee> list = null;
-        Session session = HibernateConfig.getSessionFactory().openSession();
-
-        try {
-            session.beginTransaction();
-            System.out.println("getAllInterns");
-            list = session.createQuery("from employee").list();
-            session.getTransaction().commit();
-        } catch (ConstraintViolationException e) {
-            session.getTransaction().rollback();
-            e.printStackTrace();
-        } catch (HibernateException e) {
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
-        return list;
-    }
 }
